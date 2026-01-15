@@ -1,0 +1,129 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    width: 100%;
+    cursor: pointer;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    /* Standard fashion aspect ratio */
+    overflow: hidden;
+    background-color: var(--color-grey-100);
+    margin-bottom: var(--spacing-sm);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.hoverImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover .hoverImage {
+    opacity: 1;
+}
+
+.card:hover .image {
+    transform: scale(1.05);
+    /* Subtle zoom on hover */
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-md);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.imageContainer:hover .actions {
+    transform: translateY(0);
+}
+
+.quickAdd {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--color-black);
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    transition: background 0.2s;
+}
+
+.quickAdd:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.name {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.price {
+    font-size: 0.9rem;
+    color: var(--color-grey-500);
+}
+
+.salePrice {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.colors {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.colorDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--color-grey-100);
+}

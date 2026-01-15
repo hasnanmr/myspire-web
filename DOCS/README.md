@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Greenspire Web - Walkthrough
 
-## Getting Started
+We have successfully built the **Greenspire Web** premium bag marketplace. This project combines the high-end aesthetic of *Strathberry* with the robust functionality of *Elizabeth.co.id*.
 
-First, run the development server:
+## 🏗️ What We Built
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Premium Design System
+-   **Typography**: *Playfair Display* for headings (Luxury feel), *Lato* for body.
+-   **Color Palette**: Forest Green (`#1F3324`), Cream (`#F9F8F6`), and Burgundy Accents.
+-   **Styling**: Pure **Vanilla CSS** with CSS Variables for performance and clean code.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Core Features
+-   **Landing Page**: Hero section, "Shop by Category" grid, and Editorial storytelling block.
+-   **Shop Page**:
+    -   Sidebar with Categories, Colors, and Price filters.
+    -   Sortable Grid layout.
+    -   **Product Cards**: Custom component with "Quick Add" and image swap on hover.
+-   **Authentication**:
+    -   Combined Login/Sign-up flow with a clean, centered design.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Documentation & Asset Management
+-   **Docs Folder**: Centralized documentation in `DOCS/` covering Installation, Design System, and Project Structure.
+-   **Image Management**: Dedicated `public/images/products` folder for easy content updates.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔬 Research Process
+We started by analyzing two key reference sites to determine the direction.
 
-To learn more about Next.js, take a look at the following resources:
+### Reference 1: Strathberry (Aesthetics)
+We adopted their minimalist header and use of serif fonts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Reference 2: Elizabeth.co.id (Structure)
+We used their practical grid layout and filter structure for the Shop page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 How to Run
+1.  **Install**: `npm install`
+2.  **Dev Server**: `npm run dev`
+3.  **Build**: `npm run build` (Verified successfully)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application is now production-ready for deployment to Vercel or any Node.js host.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📚 Additional Documentation
+- [Implementation Plan](./Implementation_Plan.md) - Original design plan and proposed changes
+- [Setup and Installation](./Setup_and_Installation.md) - Getting started guide
+- [Design System & Assets](./Design_and_Assets.md) - Colors, fonts, and image management
+- [Technical Overview](./Technical_Overview.md) - Tech stack and project structure

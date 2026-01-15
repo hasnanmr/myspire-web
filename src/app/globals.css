@@ -1,27 +1,36 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Brand Palette */
+  --color-primary: #1F3324;
+  /* Forest Green - Strathberry vibe */
+  --color-primary-light: #2C4533;
+  --color-accent: #862633;
+  /* Deep Red/Burgundy - Sale/Action */
+  --color-cream: #F9F8F6;
+  /* Off-white background */
+  --color-white: #FFFFFF;
+  --color-black: #1A1A1A;
+  --color-grey-50: #F5F5F5;
+  --color-grey-100: #E5E5E5;
+  --color-grey-500: #888888;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  /* Spacing & Layout */
+  --container-width: 1440px;
+  --header-height: 80px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+  --spacing-hh: 96px;
+  /* Huge */
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {

@@ -1,66 +1,111 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import ProductCard from '@/components/ProductCard';
+import styles from './home.module.css';
 
 export default function Home() {
+  // Product data with real images - Rupiah pricing
+  const bestsellers = [
+    {
+      id: 1,
+      name: "Pouch Bag",
+      price: "180.000",
+      currency: "Rp",
+      image: "/images/products/pouch/pouch-001.jpg",
+      hoverImage: "/images/products/pouch/pouch-002.jpg",
+      colors: ['#000000', '#1F3A5F'],
+      isNew: true
+    },
+    {
+      id: 2,
+      name: "Sling Bag",
+      price: "250.000",
+      currency: "Rp",
+      image: "/images/products/slingbag/sling-001.jpg",
+      hoverImage: "/images/products/slingbag/sling-002.jpg",
+      colors: ['#000000', '#1F3A5F'],
+      isNew: false
+    },
+    {
+      id: 3,
+      name: "Tote Pack",
+      price: "490.000",
+      currency: "Rp",
+      image: "/images/products/totepack/pack-001.jpg",
+      hoverImage: "/images/products/totepack/pack-002.jpg",
+      colors: ['#000000', '#1F3A5F'],
+      isNew: false
+    },
+  ];
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className={styles.container}>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Trendy, design for your routine activity</h1>
+          <p className={styles.heroSubtitle}>Premium bags crafted for everyday adventures.</p>
+          <Link href="/shop" className="btn btn-primary">
+            Explore Collection
+          </Link>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Categories */}
+      <section className={`${styles.section} container`}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Our Families</h2>
+          <span className={styles.sectionSubtitle}>Shop by Category</span>
         </div>
-      </main>
+
+        <div className={styles.categoryGrid}>
+          {[
+            { name: 'Pouch', path: 'pouch' },
+            { name: 'Sling Bag', path: 'slingbag' },
+            { name: 'Tote Pack', path: 'totepack' }
+          ].map((cat) => (
+            <Link href={`/shop?category=${cat.path}`} key={cat.path} className={styles.categoryCard}>
+              <div className={styles.categoryContent}>
+                <h3>{cat.name}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Bestsellers Preview */}
+      <section className={`${styles.section} container`}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Bestsellers</h2>
+          <Link href="/shop" className="btn btn-outline" style={{ marginTop: '1rem' }}>
+            View All
+          </Link>
+        </div>
+
+        <div className={styles.productGrid}>
+          {bestsellers.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+
+      {/* Editorial / Brand Story */}
+      <section className={styles.editorial}>
+        <div className={`${styles.editorialGrid} container`}>
+          <div className={styles.editorialImage}></div>
+          <div className={styles.editorialContent}>
+            <h2>The Art of Craftsmanship</h2>
+            <p>
+              Each Myspire piece is a testament to patience and precision.
+              Sourced from the finest tanneries and assembled by master artisans,
+              our bags are designed to evolve with you, gaining character and beauty over time.
+            </p>
+            <Link href="/our-story" className="btn btn-outline" style={{ borderColor: '#fff', color: '#fff' }}>
+              Read Our Story
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
