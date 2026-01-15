@@ -33,9 +33,9 @@ export default function Footer() {
                     <div className={styles.column}>
                         <h4>Follow Us</h4>
                         <ul>
-                            <li><a href="https://linktr.ee/myspireindonesia" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Instagram</a></li>
+                            <li><a href="https://www.instagram.com/myspireindonesia/#" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Instagram</a></li>
                             <li><a href="https://shopee.co.id/myspireindonesia" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Shopee</a></li>
-                            <li><a href="https://linktr.ee/myspireindonesia" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Tokopedia</a></li>
+                            <li><a href="https://www.tokopedia.com/my-spire-indonesia" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Tokopedia</a></li>
                         </ul>
                     </div>
                 </div>
