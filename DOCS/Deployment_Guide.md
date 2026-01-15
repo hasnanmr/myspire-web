@@ -63,5 +63,29 @@ Jika klien sedang bersama Anda dalam satu jaringan Wi-Fi yang sama:
 
 ---
 
+## Opsi 4: Menjalankan di Background (Local Server)
+
+Jika Anda ingin server tetap berjalan meskipun terminal ditutup (deployment di server lokal/VPS), gunakan **PM2**.
+
+1.  **Install PM2 (Process Manager):**
+    ```bash
+    npm install -g pm2
+    # Jika gagal karena permission, gunakan: sudo npm install -g pm2
+    ```
+
+2.  **Jalankan Server:**
+    Pastikan Anda sudah melakukan build (`npm run build`) terlebih dahulu.
+    ```bash
+    pm2 start npm --name "myspire-web" -- start
+    ```
+
+3.  **Perintah Berguna Lainnya:**
+    *   **Cek Status:** `pm2 list`
+    *   **Lihat Logs:** `pm2 logs`
+    *   **Stop Server:** `pm2 stop myspire-web`
+    *   **Restart Server:** `pm2 restart myspire-web`
+
+---
+
 > [!TIP]
 > **Vercel** adalah pilihan terbaik karena setiap kali Anda melakukan `git push`, website akan otomatis terupdate. Klien akan selalu melihat versi terbaru tanpa perlu campur tangan manual.
