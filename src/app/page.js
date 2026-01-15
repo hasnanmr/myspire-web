@@ -60,11 +60,11 @@ export default function Home() {
 
         <div className={styles.categoryGrid}>
           {[
-            { name: 'Pouch', path: 'pouch' },
-            { name: 'Sling Bag', path: 'slingbag' },
-            { name: 'Tote Pack', path: 'totepack' }
+            { name: 'Pouch', path: 'pouch', image: '/images/products/pouch/pouch_003.jpeg' },
+            { name: 'Sling Bag', path: 'slingbag', image: '/images/products/slingbag/sling-003.jpeg' },
+            { name: 'Tote Pack', path: 'totepack', image: '/images/products/totepack/tote-003.jpeg' }
           ].map((cat) => (
-            <Link href={`/shop?category=${cat.path}`} key={cat.path} className={styles.categoryCard}>
+            <Link href={`/shop?category=${cat.path}`} key={cat.path} className={styles.categoryCard} style={{ backgroundImage: `url(${cat.image})` }}>
               <div className={styles.categoryContent}>
                 <h3>{cat.name}</h3>
               </div>

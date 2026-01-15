@@ -36,16 +36,19 @@ We used their practical grid layout and filter structure for the Shop page.
 ---
 
 ## 🚀 How to Run
+## 🚀 How to Run
 1.  **Install**: `npm install`
 2.  **Dev Server**: `npm run dev`
-3.  **Build**: `npm run build` (Verified successfully)
+3.  **Build**: `npm run build`
+4.  **Production (Background)**: `pm2 start npm --name "myspire-web" -- start`
 
-The application is now production-ready for deployment to Vercel or any Node.js host.
+The application is now production-ready and running with **PM2** for process management.
 
 ---
 
 ## 📚 Additional Documentation
-- [Implementation Plan](./Implementation_Plan.md) - Original design plan and proposed changes
+- [Project Status & Changelog](./Project_Status.md) - Record of project updates and roadmap
+- [Auth Implementation Plan](./Auth_Implementation_Plan.md) - Plan for SQLite authentication system
 - [Setup and Installation](./Setup_and_Installation.md) - Getting started guide
 - [Design System & Assets](./Design_and_Assets.md) - Colors, fonts, and image management
 - [Technical Overview](./Technical_Overview.md) - Tech stack and project structure

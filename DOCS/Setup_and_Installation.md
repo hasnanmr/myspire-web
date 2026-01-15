@@ -14,4 +14,14 @@
     ```bash
     npm run dev
     ```
-4.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4.  **Running in Production (Recommended)**:
+    Install PM2 globally if you haven't:
+    ```bash
+    npm install -g pm2
+    ```
+    Start the server:
+    ```bash
+    npm run build
+    pm2 start npm --name "myspire-web" -- start
+    ```
+5.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

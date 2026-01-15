@@ -1,0 +1,31 @@
+# Project Status & Changelog
+
+## Current Status
+**Active Development** - The project is currently in the refinement and deployment phase.
+
+## Recent Updates
+
+### ✅ Feature: Shop & Homepage Sync
+- **Date**: 2026-01-16
+- **Details**: 
+    - Updated `src/app/shop/page.js` to match the specific product inventory (Pouch, Sling Bag, Tote Pack).
+    - Switched pricing format to IDR (Rp).
+    - Updated Homepage Category cards to use transparency-friendly background images (`pouch_003`, `sling-003`, `tote-003`).
+
+### ✅ Infrastructure: Background Deployment (PM2)
+- **Date**: 2026-01-15
+- **Details**:
+    - Installed `pm2` for process management.
+    - Configured server to run in background (`pm2 start npm --name "myspire-web" -- start`).
+    - Verified build process.
+
+### ✅ Maintenance: Dependency Fixes
+- **Date**: 2026-01-15
+- **Details**:
+    - Downgraded `eslint` to v8 to resolve tracking issues with `eslint-config-next`.
+    - Fixed build errors (`next: not found`) by ensuring dependencies were correctly installed.
+
+## Upcoming Roadmap
+- [ ] Mobile responsive refinement for filter drawer.
+- [ ] Integration with backend API (currently using static data).
+- [ ] Shopping cart functionality implementation.

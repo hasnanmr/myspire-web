@@ -3,6 +3,7 @@
 ## 🛠️ Technology Stack
 
 -   **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
+-   **Process Manager**: [PM2](https://pm2.keymetrics.io/) (for background execution)
 -   **Styling**: Vanilla CSS (Variables & Modules) for pixel-perfect control.
 -   **Icons**: [Lucide React](https://lucide.dev/)
 -   **Fonts**: Google Fonts (Playfair Display for headings, Lato for UI).

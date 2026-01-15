@@ -1,16 +1,38 @@
 import ProductCard from '@/components/ProductCard';
 import styles from './shop.module.css';
 
-// Mock Product Data
+// Product Data - matching bestsellers from homepage
 const PRODUCTS = [
-    { id: 1, name: "East/West Mini", price: 545, colors: ['#000', '#800020', '#F5F5DC'], isNew: true },
-    { id: 2, name: "Mosaic Tote", price: 695, colors: ['#556B2F', '#000'], isNew: false },
-    { id: 3, name: "Nano Tote", price: 445, salePrice: 350, colors: ['#FFC0CB', '#fff'], isNew: false },
-    { id: 4, name: "Omni Satchel", price: 625, colors: ['#8B4513', '#A52A2A', '#000'], isNew: false },
-    { id: 5, name: "Crescent Shoulder", price: 495, colors: ['#000', '#fff'], isNew: true },
-    { id: 6, name: "Box Crescent", price: 575, colors: ['#1F3324', '#000'], isNew: false },
-    { id: 7, name: "Multrees Chain Wallet", price: 295, colors: ['#800020', '#000'], isNew: false },
-    { id: 8, name: "Lana Osette", price: 475, salePrice: 400, colors: ['#F5F5DC', '#8B4513'], isNew: false },
+    {
+        id: 1,
+        name: "Pouch Bag",
+        price: "180.000",
+        currency: "Rp",
+        image: "/images/products/pouch/pouch-001.jpg",
+        hoverImage: "/images/products/pouch/pouch-002.jpg",
+        colors: ['#000000', '#1F3A5F'],
+        isNew: true
+    },
+    {
+        id: 2,
+        name: "Sling Bag",
+        price: "250.000",
+        currency: "Rp",
+        image: "/images/products/slingbag/sling-001.jpg",
+        hoverImage: "/images/products/slingbag/sling-002.jpg",
+        colors: ['#000000', '#1F3A5F'],
+        isNew: false
+    },
+    {
+        id: 3,
+        name: "Tote Pack",
+        price: "490.000",
+        currency: "Rp",
+        image: "/images/products/totepack/pack-001.jpg",
+        hoverImage: "/images/products/totepack/pack-002.jpg",
+        colors: ['#000000', '#1F3A5F'],
+        isNew: false
+    },
 ];
 
 export default function Shop() {
@@ -36,9 +58,9 @@ export default function Shop() {
                         <h3>Category</h3>
                         <ul className={styles.filterList}>
                             <li className={styles.filterItem}><div className={styles.checkbox} /> View All</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Totes</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Crossbody</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Satchels</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Pouch</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Sling Bag</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Tote Pack</li>
                         </ul>
                     </div>
 
@@ -46,18 +68,16 @@ export default function Shop() {
                         <h3>Color</h3>
                         <ul className={styles.filterList}>
                             <li className={styles.filterItem}><div className={styles.checkbox} /> Black</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Green</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Burgundy</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Cream</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Navy Blue</li>
                         </ul>
                     </div>
 
                     <div className={styles.filterGroup}>
                         <h3>Price</h3>
                         <ul className={styles.filterList}>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Under $300</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> $300 - $500</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Over $500</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Under Rp200.000</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Rp200.000 - Rp400.000</li>
+                            <li className={styles.filterItem}><div className={styles.checkbox} /> Over Rp400.000</li>
                         </ul>
                     </div>
                 </aside>
