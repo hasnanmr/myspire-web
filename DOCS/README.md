@@ -49,6 +49,7 @@ The application is now production-ready and running with **PM2** for process man
 ## 📚 Additional Documentation
 - [Project Status & Changelog](./Project_Status.md) - Record of project updates and roadmap
 - [Auth Implementation Plan](./Auth_Implementation_Plan.md) - Plan for SQLite authentication system
+- [Mockup Sharing Guide](./Mockup_Sharing_Guide.md) - Free & temporary ways to share your work
 - [Setup and Installation](./Setup_and_Installation.md) - Getting started guide
 - [Design System & Assets](./Design_and_Assets.md) - Colors, fonts, and image management
 - [Technical Overview](./Technical_Overview.md) - Tech stack and project structure
