@@ -96,3 +96,9 @@ nohup: ignoring input
  GET / 200 in 44ms
  GET /favicon.ico 200 in 10ms
  ✓ Compiled in 136ms (301 modules)
+ ✓ Compiled in 159ms (301 modules)
+ GET / 200 in 79ms
+ ✓ Compiled /favicon.ico in 175ms (332 modules)
+ GET /favicon.ico 200 in 235ms
+ ✓ Compiled in 157ms (301 modules)
+ ✓ Compiled in 143ms (301 modules)

@@ -92,13 +92,19 @@ export default function Home() {
       {/* Editorial / Brand Story */}
       <section className={styles.editorial}>
         <div className={`${styles.editorialGrid} container`}>
-          <div className={styles.editorialImage}></div>
+          <div className={styles.editorialImage}>
+            <img
+              src="/images/products/totepack/custom-001.png"
+              alt="Myspire Custom Tote Pack Craftsmanship"
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            />
+          </div>
           <div className={styles.editorialContent}>
             <h2>The Art of Craftsmanship</h2>
             <p>
-              Each Myspire piece is a testament to patience and precision.
-              Sourced from the finest tanneries and assembled by master artisans,
-              our bags are designed to evolve with you, gaining character and beauty over time.
+              Myspire is a testament to patience and precision.
+              Made by artisans with love and care.
+              You Can Make Your Own Design by Your Own Inspiration.
             </p>
             <Link href="/about" className="btn btn-outline" style={{ borderColor: '#fff', color: '#fff' }}>
               Read Our Story
