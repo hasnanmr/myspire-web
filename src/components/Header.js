@@ -8,9 +8,10 @@ export default function Header() {
             <div className={`container ${styles.navContainer}`}>
                 {/* Left Navigation: Collections */}
                 <nav className={styles.leftNav}>
+                    <Link href="/" className={styles.navLink}>Home</Link>
                     <Link href="/shop" className={styles.navLink}>Shop All</Link>
-                    <Link href="/shop?category=new" className={styles.navLink}>New Arrivals</Link>
-                    <Link href="/editorial" className={styles.navLink}>Editorial</Link>
+                    <Link href="/new-arrivals" className={styles.navLink}>New Arrivals</Link>
+                    <Link href="/about" className={styles.navLink}>About</Link>
                 </nav>
 
                 {/* Center Logo */}
@@ -20,13 +21,14 @@ export default function Header() {
 
                 {/* Right Navigation: Tools */}
                 <div className={styles.rightNav}>
-                    <button className={styles.iconBtn} aria-label="Search">
+                    <button className={`${styles.iconBtn} ${styles.searchBtn}`} aria-label="Search">
                         <Search size={20} strokeWidth={1.5} />
                     </button>
-                    <Link href="/login" className={styles.iconBtn} aria-label="Account">
+                    <Link href="/login" className={`${styles.iconBtn} ${styles.accountBtn}`} aria-label="Account">
                         <User size={20} strokeWidth={1.5} />
+                        <span className={styles.loginLabel}>Login</span>
                     </Link>
-                    <button className={styles.iconBtn} aria-label="Cart">
+                    <button className={`${styles.iconBtn} ${styles.cartBtn}`} aria-label="Cart">
                         <ShoppingBag size={20} strokeWidth={1.5} />
                     </button>
                 </div>

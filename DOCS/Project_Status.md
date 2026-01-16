@@ -12,6 +12,15 @@
     - Switched pricing format to IDR (Rp).
     - Updated Homepage Category cards to use transparency-friendly background images (`pouch_003`, `sling-003`, `tote-003`).
 
+### ✅ Infrastructure: Public Mockup Sharing (Cloudflare Tunnel)
+- **Date**: 2026-01-16
+- **Details**:
+    - Configured Next.js dev server to run in background (`nohup npm run dev`).
+    - Set up Cloudflare Tunnel for public access without requiring domain or hosting.
+    - Public URL: `https://wheel-sellers-gasoline-clusters.trycloudflare.com`
+    - Both processes run persistently in background for continuous mockup availability.
+
+
 ### ✅ Infrastructure: Background Deployment (PM2)
 - **Date**: 2026-01-15
 - **Details**:

@@ -87,5 +87,83 @@ Jika Anda ingin server tetap berjalan meskipun terminal ditutup (deployment di s
 
 ---
 
+## Opsi 5: Cloudflare Tunnel (Currently Active - Public Access Gratis)
+
+**Status:** ✅ **Saat ini sedang berjalan**
+
+Cloudflare Tunnel memungkinkan Anda mengekspos server lokal ke internet tanpa memerlukan domain atau konfigurasi router. Cocok untuk mockup temporary dengan URL publik yang stabil.
+
+### Setup Saat Ini:
+
+**URL Publik (Aktif):** `https://wheel-sellers-gasoline-clusters.trycloudflare.com`
+
+Server development dan tunnel saat ini berjalan di background sebagai proses persistent.
+
+### Cara Menjalankan (Manual):
+
+1.  **Jalankan Next.js Server di Background:**
+    ```bash
+    nohup npm run dev > next_dev.log 2>&1 &
+    ```
+
+2.  **Jalankan Cloudflare Tunnel di Background:**
+    ```bash
+    nohup npx cloudflared tunnel --url http://localhost:3000 > cloudflare_tunnel.log 2>&1 &
+    ```
+
+3.  **Dapatkan URL Publik:**
+    Buka file log untuk melihat URL yang digenerate:
+    ```bash
+    grep -o "https://.*\.trycloudflare\.com" cloudflare_tunnel.log
+    ```
+
+### Manajemen Proses Background:
+
+**Cek Status Proses:**
+```bash
+ps aux | grep -E "(next|cloudflared)" | grep -v grep
+```
+
+**Lihat Log Server:**
+```bash
+tail -f next_dev.log
+```
+
+**Lihat Log Tunnel:**
+```bash
+tail -f cloudflare_tunnel.log
+```
+
+**Stop Semua Proses:**
+```bash
+# Stop Next.js server
+fuser -k 3000/tcp
+
+# Stop Cloudflare Tunnel
+pkill cloudflared
+```
+
+**Restart Tunnel (jika URL berubah):**
+```bash
+pkill cloudflared
+nohup npx cloudflared tunnel --url http://localhost:3000 > cloudflare_tunnel.log 2>&1 &
+# Tunggu beberapa detik, lalu cek log untuk URL baru
+tail -n 20 cloudflare_tunnel.log
+```
+
+### Kelebihan:
+- ✅ Tidak perlu akun atau konfigurasi
+- ✅ HTTPS otomatis
+- ✅ Gratis untuk penggunaan temporary
+- ✅ Berjalan di background dengan `nohup`
+
+### Kekurangan:
+- ⚠️ URL random (tidak bisa custom tanpa akun Cloudflare)
+- ⚠️ Tidak ada uptime guarantee untuk tunnel tanpa akun
+- ⚠️ URL akan berubah jika tunnel direstart
+
+---
+
+
 > [!TIP]
 > **Vercel** adalah pilihan terbaik karena setiap kali Anda melakukan `git push`, website akan otomatis terupdate. Klien akan selalu melihat versi terbaru tanpa perlu campur tangan manual.

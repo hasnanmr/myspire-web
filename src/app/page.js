@@ -43,8 +43,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Trendy, design for your routine activity</h1>
-          <p className={styles.heroSubtitle}>Premium bags crafted for everyday adventures.</p>
+          <h1 className={styles.heroTitle}>Design for your routine activity</h1>
+          {/* <p className={styles.heroSubtitle}>Premium bags craf.</p> */}
           <Link href="/shop" className="btn btn-primary">
             Explore Collection
           </Link>
@@ -100,7 +100,7 @@ export default function Home() {
               Sourced from the finest tanneries and assembled by master artisans,
               our bags are designed to evolve with you, gaining character and beauty over time.
             </p>
-            <Link href="/our-story" className="btn btn-outline" style={{ borderColor: '#fff', color: '#fff' }}>
+            <Link href="/about" className="btn btn-outline" style={{ borderColor: '#fff', color: '#fff' }}>
               Read Our Story
             </Link>
           </div>

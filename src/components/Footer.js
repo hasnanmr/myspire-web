@@ -17,8 +17,8 @@ export default function Footer() {
                     <div className={styles.column}>
                         <h4>About Myspire</h4>
                         <ul>
-                            <li><Link href="/our-story" className={styles.footerLink}>Our Story</Link></li>
-                            <li><Link href="/sustainability" className={styles.footerLink}>Sustainability</Link></li>
+                            <li><Link href="/about" className={styles.footerLink}>Our Story</Link></li>
+                            <li><Link href="/new-arrivals" className={styles.footerLink}>New Arrivals</Link></li>
                         </ul>
                     </div>
 
