@@ -23,17 +23,27 @@ export const metadata = {
   icons: {
     icon: '/images/logo.jpeg',
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
+
+import { CartProvider } from "@/context/CartContext";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${inter.variable}`}>
-        <Header />
-        <main style={{ minHeight: '80vh' }}>
-          {children}
-        </main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main style={{ minHeight: '80vh' }}>
+            {children}
+          </main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

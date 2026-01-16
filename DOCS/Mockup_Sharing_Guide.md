@@ -21,14 +21,42 @@ Karena Anda menggunakan IP `100.x.x.x`, Anda kemungkinan besar sudah menggunakan
     ```
 2.  **Lihat URL:** Tailscale akan memberikan URL permanen berbasis nama mesin Anda (misal: `https://myspire-web.tail1234.ts.net`).
 
-## Opsi 3: Cloudflare Tunnel (Sangat Stabil)
+## Opsi 3: Cloudflare Tunnel (Sangat Stabil & Persistent)
 Sangat stabil dan memberikan URL `trycloudflare.com` secara otomatis.
+
+> [!WARNING]
+> **PENTING untuk Remote Server:** Jika menjalankan di remote server via SSH, proses tunnel akan mati saat SSH disconnect. Gunakan **PM2**, **Screen/Tmux**, atau **Systemd Service** untuk menjalankan secara persistent. Lihat [Deployment_Guide.md](./Deployment_Guide.md#opsi-5-cloudflare-tunnel-public-access-gratis---persistent) untuk instruksi lengkap.
+
+**Cara cepat (untuk testing lokal):**
 
 1.  **Jalankan Tanpa Install:**
     ```bash
     npx cloudflared tunnel --url http://localhost:3000
     ```
 2.  **Dapatkan URL:** Cari baris yang berisi link `https://...trycloudflare.com` di output terminal.
+
+**Untuk remote server (persistent):**
+
+Gunakan PM2 (paling mudah):
+```bash
+# Install PM2
+npm install -g pm2
+
+# Start Next.js server
+pm2 start npm --name "myspire-dev" -- run dev
+
+# Start Cloudflare tunnel
+pm2 start npx --name "cloudflare-tunnel" -- cloudflared tunnel --url http://localhost:3000
+
+# Dapatkan URL tunnel
+pm2 logs cloudflare-tunnel --lines 50 | grep -o "https://.*\.trycloudflare\.com"
+
+# Save config (auto-restart on reboot)
+pm2 save
+pm2 startup
+```
+
+Lihat [Deployment_Guide.md](./Deployment_Guide.md) untuk metode lain (Screen, Tmux, Systemd).
 
 ---
 

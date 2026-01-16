@@ -2,26 +2,35 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: transparent;
+    background-color: var(--color-white);
     width: 100%;
     cursor: pointer;
+    transition: var(--transition-smooth);
 }
 
 .imageContainer {
     position: relative;
+    display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
-    /* Standard fashion aspect ratio */
+    aspect-ratio: 3 / 4;
     overflow: hidden;
-    background-color: var(--color-grey-100);
-    margin-bottom: var(--spacing-sm);
+    background-color: var(--color-grey-50);
+    margin-bottom: var(--spacing-md);
+    /* Improve touch target for mobile */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    touch-action: manipulation;
 }
 
 .image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: opacity 0.4s ease, transform 0.6s ease;
+    object-fit: contain;
+    /* Ensure no cropping */
+    padding: 12px;
+    /* Breathing room for product */
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Don't block clicks - let the parent Link handle it */
+    pointer-events: none;
 }
 
 .hoverImage {
@@ -30,9 +39,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 12px;
     opacity: 0;
     transition: opacity 0.4s ease;
+    /* Don't block clicks - let the parent Link handle it */
+    pointer-events: none;
 }
 
 .card:hover .hoverImage {
@@ -40,90 +52,109 @@
 }
 
 .card:hover .image {
-    transform: scale(1.05);
-    /* Subtle zoom on hover */
+    transform: scale(1.02);
 }
 
 .badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: var(--color-accent);
+    top: 12px;
+    left: 12px;
+    background-color: var(--color-black);
     color: var(--color-white);
-    padding: 4px 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1px;
     z-index: 2;
 }
 
-.actions {
+.quickAddBtn {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: var(--spacing-md);
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-    z-index: 2;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    opacity: 0;
+    transform: translateY(10px);
+    width: calc(100% - var(--spacing-md) * 2);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 12px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    transition: all 0.3s ease;
+    z-index: 3;
     display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    /* Don't block parent link on mobile */
+    pointer-events: none;
 }
 
-.imageContainer:hover .actions {
+.imageContainer:hover .quickAddBtn {
+    opacity: 1;
     transform: translateY(0);
 }
 
-.quickAdd {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    color: var(--color-black);
-    padding: 10px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: none;
-    transition: background 0.2s;
+.quickAddBtn:hover {
+    background-color: #333;
 }
 
-.quickAdd:hover {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
 }
 
-.info {
+.headerRow {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.name {
+.productName {
     font-family: var(--font-sans);
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     color: var(--color-black);
+    transition: color 0.2s;
 }
 
-.price {
-    font-size: 0.9rem;
+.productName:hover {
     color: var(--color-grey-500);
 }
 
-.salePrice {
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-left: 8px;
+.price {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-grey-500);
 }
 
-.colors {
+.colorSwatches {
     display: flex;
-    gap: 6px;
-    margin-top: 6px;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
 }
 
-.colorDot {
-    width: 12px;
-    height: 12px;
+.swatch {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     border: 1px solid var(--color-grey-100);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .quickAddBtn {
+        display: none;
+    }
 }

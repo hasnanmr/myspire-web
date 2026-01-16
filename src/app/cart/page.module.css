@@ -1,0 +1,227 @@
+.container {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+    min-height: 80vh;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--color-grey-50);
+    border-radius: 8px;
+}
+
+.emptyState h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--color-grey-500);
+}
+
+.shopBtn {
+    display: inline-block;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 12px 32px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.shopBtn:hover {
+    opacity: 0.8;
+}
+
+.cartLayout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+/* Cart Table */
+.cartTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cartTable th {
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-grey-100);
+    color: var(--color-grey-500);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cartItemRow {
+    border-bottom: 1px solid var(--color-grey-100);
+}
+
+.cartItemRow td {
+    padding: 24px 0;
+    vertical-align: top;
+}
+
+.itemInfo {
+    display: flex;
+    gap: 20px;
+}
+
+.itemImage {
+    width: 100px;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    background-color: var(--color-grey-50);
+    border-radius: 4px;
+}
+
+.itemDetails h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.itemVariant {
+    color: var(--color-grey-500);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.itemPrice {
+    font-weight: 600;
+}
+
+/* Quantity Control */
+.quantityControl {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-grey-100);
+    width: fit-content;
+    height: 36px;
+}
+
+.qtyBtn {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-black);
+}
+
+.qtyBtn:hover {
+    background-color: var(--color-grey-50);
+}
+
+.qtyText {
+    width: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.removeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-grey-500);
+    padding: 8px;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.removeBtn:hover {
+    color: #e53935;
+}
+
+/* Order Summary */
+.summaryCard {
+    background-color: var(--color-grey-50);
+    padding: 30px;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.summaryTitle {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    color: var(--color-grey-500);
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-grey-200);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-black);
+}
+
+.checkoutBtn {
+    width: 100%;
+    margin-top: 32px;
+    padding: 16px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checkoutBtn:hover {
+    background-color: #333;
+}
+
+@media (max-width: 768px) {
+    .cartLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .cartTable thead {
+        display: none;
+    }
+
+    .cartItemRow td {
+        display: block;
+        padding: 10px 0;
+    }
+
+    .cartItemRow {
+        position: relative;
+        padding-bottom: 24px;
+    }
+
+    .removeBtn {
+        position: absolute;
+        top: 24px;
+        right: 0;
+    }
+}

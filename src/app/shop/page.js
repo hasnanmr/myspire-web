@@ -1,47 +1,45 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
+import { getAllProducts, formatPrice } from '@/lib/products';
 import styles from './shop.module.css';
 
-// Product Data - matching bestsellers from homepage
-const PRODUCTS = [
-    {
-        id: 1,
-        name: "Pouch Bag",
-        price: "180.000",
-        currency: "Rp",
-        image: "/images/products/pouch/pouch-001.jpg",
-        hoverImage: "/images/products/pouch/pouch-002.jpg",
-        colors: ['#000000', '#1F3A5F'],
-        isNew: true
-    },
-    {
-        id: 2,
-        name: "Sling Bag",
-        price: "250.000",
-        currency: "Rp",
-        image: "/images/products/slingbag/sling-001.jpg",
-        hoverImage: "/images/products/slingbag/sling-002.jpg",
-        colors: ['#000000', '#1F3A5F'],
-        isNew: false
-    },
-    {
-        id: 3,
-        name: "Tote Pack",
-        price: "490.000",
-        currency: "Rp",
-        image: "/images/products/totepack/pack-001.jpg",
-        hoverImage: "/images/products/totepack/pack-002.jpg",
-        colors: ['#000000', '#1F3A5F'],
-        isNew: false
-    },
-];
-
 export default function Shop() {
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get('category');
+    const allProducts = getAllProducts();
+
+    // Filter products based on category parameter
+    const filteredProducts = categoryParam
+        ? allProducts.filter(product => product.category === categoryParam)
+        : allProducts;
+
+    // Transform for ProductCard display (format price string)
+    const displayProducts = filteredProducts.map(p => ({
+        ...p,
+        price: formatPrice(p.price),
+        colors: p.colors.map(c => c.hex) // Extract hex codes for card preview
+    }));
+
+
+    // Get category name for display
+    const getCategoryName = () => {
+        if (!categoryParam) return 'All Bags';
+        const categoryNames = {
+            'pouch': 'Pouch',
+            'slingbag': 'Sling Bag',
+            'totepack': 'Tote Pack'
+        };
+        return categoryNames[categoryParam] || 'All Bags';
+    };
+
     return (
         <div className={`container ${styles.pageContainer}`}>
             <div className={styles.header}>
                 <div className={styles.title}>
-                    <h1>All Bags</h1>
-                    <p className={styles.subtitle}>Showing {PRODUCTS.length} results</p>
+                    <h1>{getCategoryName()}</h1>
+                    <p className={styles.subtitle}>Showing {displayProducts.length} result{displayProducts.length !== 1 ? 's' : ''}</p>
                 </div>
                 <select className={styles.sortSelect} defaultValue="newest">
                     <option value="newest">Newest Arrivals</option>
@@ -57,10 +55,22 @@ export default function Shop() {
                     <div className={styles.filterGroup}>
                         <h3>Category</h3>
                         <ul className={styles.filterList}>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> View All</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Pouch</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Sling Bag</li>
-                            <li className={styles.filterItem}><div className={styles.checkbox} /> Tote Pack</li>
+                            <li className={styles.filterItem}>
+                                <div className={styles.checkbox} />
+                                <a href="/shop" style={{ color: !categoryParam ? '#000' : '#666', fontWeight: !categoryParam ? '600' : '400' }}>View All</a>
+                            </li>
+                            <li className={styles.filterItem}>
+                                <div className={styles.checkbox} />
+                                <a href="/shop?category=pouch" style={{ color: categoryParam === 'pouch' ? '#000' : '#666', fontWeight: categoryParam === 'pouch' ? '600' : '400' }}>Pouch</a>
+                            </li>
+                            <li className={styles.filterItem}>
+                                <div className={styles.checkbox} />
+                                <a href="/shop?category=slingbag" style={{ color: categoryParam === 'slingbag' ? '#000' : '#666', fontWeight: categoryParam === 'slingbag' ? '600' : '400' }}>Sling Bag</a>
+                            </li>
+                            <li className={styles.filterItem}>
+                                <div className={styles.checkbox} />
+                                <a href="/shop?category=totepack" style={{ color: categoryParam === 'totepack' ? '#000' : '#666', fontWeight: categoryParam === 'totepack' ? '600' : '400' }}>Tote Pack</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -84,9 +94,15 @@ export default function Shop() {
 
                 {/* Product Grid */}
                 <div className={styles.productGrid}>
-                    {PRODUCTS.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
+                    {displayProducts.length > 0 ? (
+                        displayProducts.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))
+                    ) : (
+                        <p style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '40px', color: '#666' }}>
+                            No products found in this category.
+                        </p>
+                    )}
                 </div>
             </div>
         </div>

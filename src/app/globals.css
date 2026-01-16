@@ -1,36 +1,34 @@
 :root {
-  /* Brand Palette */
-  --color-primary: #1F3324;
-  /* Forest Green - Strathberry vibe */
-  --color-primary-light: #2C4533;
-  --color-accent: #862633;
-  /* Deep Red/Burgundy - Sale/Action */
-  --color-cream: #F9F8F6;
-  /* Off-white background */
+  /* Brand Palette - Michael Kors Inspired (Minimalist & Bold) */
+  --color-primary: #000000;
+  --color-primary-light: #333333;
+  --color-accent: #000000;
   --color-white: #FFFFFF;
-  --color-black: #1A1A1A;
-  --color-grey-50: #F5F5F5;
-  --color-grey-100: #E5E5E5;
-  --color-grey-500: #888888;
+  --color-black: #000000;
+  --color-grey-50: #F9F9F9;
+  --color-grey-100: #EBEBEB;
+  --color-grey-500: #767676;
 
   /* Typography */
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-serif: var(--font-serif), serif;
+  --font-sans: var(--font-sans), sans-serif;
 
   /* Spacing & Layout */
   --container-width: 1440px;
-  --header-height: 80px;
+  --header-height: 72px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 48px;
-  --spacing-hh: 96px;
-  /* Huge */
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+  --spacing-hh: 80px;
+  --spacing-xh: 100px;
+  --spacing-section: 120px;
+  /* Luxury spacing */
 
   /* Transitions */
   --transition-fast: 0.2s ease;
-  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 * {
@@ -39,13 +37,74 @@
   margin: 0;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Button Utilities */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  :root {
+    --spacing-section: 64px;
   }
 }

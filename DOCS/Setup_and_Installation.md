@@ -1,4 +1,4 @@
-# Getting Started with Greenspire
+# Getting Started with Myspire
 
 ## Prerequisites
 - Node.js (v18 or higher)
@@ -10,18 +10,23 @@
     ```bash
     npm install
     ```
-3.  **Run the development server**:
-    ```bash
-    npm run dev
-    ```
-4.  **Running in Production (Recommended)**:
-    Install PM2 globally if you haven't:
+
+## 🚀 Persistent Mockup Deployment
+To keep the website accessible via a public URL even after closing your terminal/SSH session:
+
+1.  **Install PM2**:
     ```bash
     npm install -g pm2
     ```
-    Start the server:
+2.  **Start Services**:
     ```bash
-    npm run build
-    pm2 start npm --name "myspire-web" -- start
+    pm2 start npm --name "myspire-dev" -- run dev
+    pm2 start npx --name "cloudflare-tunnel" -- cloudflared tunnel --url http://localhost:3000
     ```
-5.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Get Public URL**:
+    ```bash
+    pm2 logs cloudflare-tunnel --lines 50 | grep -o "https://.*\.trycloudflare\.com"
+    ```
+
+## Manual Verification
+Open [http://localhost:3000](http://localhost:3000) (local) or your Cloudflare URL (public) to see the results.

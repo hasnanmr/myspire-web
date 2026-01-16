@@ -2,7 +2,14 @@
 
 ## 🎨 Design System
 
-We use CSS Variables defined in `src/app/globals.css` to maintain consistency across the Greenspire application.
+We use CSS Variables defined in `src/app/globals.css` to maintain consistency across the Myspire application.
+
+## 🗂️ Component Library
+
+-   **Header**: Global navigation bar with mobile drawer
+-   **Footer**: Site footer with links and social media
+-   **ProductCard**: E-commerce card with hover states and "Quick Add" button
+-   **CategorySlider**: Interactive carousel with auto-play and swipe support (NEW).
 
 ### Key Variables
 -   **Primary Color**: Forest Green (`#1F3324`) - Used for primary buttons and accents.

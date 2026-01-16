@@ -7,7 +7,7 @@ export default function NewArrivalsPage() {
     const newArrivals = [
         {
             id: 1,
-            name: "Pouch Bag",
+            name: "Snap Pouch Mini",
             price: "180.000",
             currency: "Rp",
             image: "/images/products/pouch/pouch-001.jpg",
@@ -16,13 +16,13 @@ export default function NewArrivalsPage() {
             isNew: true
         },
         {
-            id: 4,
-            name: "Premium Tote",
-            price: "550.000",
+            id: 2,
+            name: "CORE Sling Bag",
+            price: "250.000",
             currency: "Rp",
-            image: "/images/products/totepack/pack-001.jpg",
-            hoverImage: "/images/products/totepack/pack-002.jpg",
-            colors: ['#000000'],
+            image: "/images/products/slingbag/sling-001.jpg",
+            hoverImage: "/images/products/slingbag/sling-002.jpg",
+            colors: ['#000000', '#1F3A5F'],
             isNew: true
         }
     ];

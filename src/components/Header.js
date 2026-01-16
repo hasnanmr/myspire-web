@@ -1,43 +1,114 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, User, ShoppingBag } from 'lucide-react';
+import { Search, User, ShoppingBag, Menu, X } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 import styles from './Header.module.css';
 
 export default function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const { getCartCount } = useCart();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isMenuOpen]);
+
+    const cartCount = mounted ? getCartCount() : 0;
+
     return (
-        <header className={styles.header}>
-            <div className={`container ${styles.navContainer}`}>
-                {/* Left Navigation: Collections */}
-                <nav className={styles.leftNav}>
-                    <Link href="/" className={styles.navLink}>Home</Link>
-                    <Link href="/shop" className={styles.navLink}>Shop All</Link>
-                    <Link href="/new-arrivals" className={styles.navLink}>New Arrivals</Link>
-                    <Link href="/about" className={styles.navLink}>About</Link>
-                </nav>
+        <>
+            <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+                <div className={`container ${styles.navContainer}`}>
+                    {/* Left: Mobile Menu Toggle & Desktop Nav */}
+                    <div className={styles.leftSection}>
+                        <button
+                            className={styles.mobileMenuToggle}
+                            onClick={() => setIsMenuOpen(true)}
+                            aria-label="Open Menu"
+                        >
+                            <Menu size={24} strokeWidth={1.5} />
+                        </button>
 
-                {/* Center Logo */}
-                <Link href="/" className={styles.logo}>
-                    <img
-                        src="/images/logo.jpeg"
-                        alt="Myspire Logo"
-                        className={styles.logoImage}
-                    />
-                    <span className={styles.logoText}>MYSPIRE</span>
-                </Link>
+                        <nav className={styles.desktopNav}>
+                            <Link href="/" className="hover:opacity-50 transition-opacity tracking-widest text-xs font-medium">HOME</Link>
+                            <Link href="/shop" className="hover:opacity-50 transition-opacity tracking-widest text-xs font-medium">SHOP ALL</Link>
+                            <Link href="/new-arrivals" className="hover:opacity-50 transition-opacity tracking-widest text-xs font-medium">NEW ARRIVALS</Link>
+                            <Link href="/about" className="hover:opacity-50 transition-opacity tracking-widest text-xs font-medium">ABOUT</Link>
+                        </nav>
+                    </div>
 
-                {/* Right Navigation: Tools */}
-                <div className={styles.rightNav}>
-                    <button className={`${styles.iconBtn} ${styles.searchBtn}`} aria-label="Search">
-                        <Search size={20} strokeWidth={1.5} />
-                    </button>
-                    <Link href="/login" className={`${styles.iconBtn} ${styles.accountBtn}`} aria-label="Account">
-                        <User size={20} strokeWidth={1.5} />
-                        <span className={styles.loginLabel}>Login</span>
+                    {/* Center: Logo */}
+                    <Link href="/" className={styles.logo}>
+                        <span className={styles.logoText}>MYSPIRE</span>
                     </Link>
-                    <button className={`${styles.iconBtn} ${styles.cartBtn}`} aria-label="Cart">
-                        <ShoppingBag size={20} strokeWidth={1.5} />
+
+                    {/* Right: Tools */}
+                    <div className={styles.rightSection}>
+                        <div className={styles.iconGroup}>
+                            <button className={styles.iconBtn} aria-label="Search">
+                                <Search size={20} strokeWidth={1.5} />
+                            </button>
+                            <Link href="/login" className={styles.iconBtn} aria-label="Account">
+                                <User size={20} strokeWidth={1.5} />
+                            </Link>
+                            <Link href="/cart" className={styles.iconBtn} aria-label="Cart">
+                                <div className={styles.cartBtnWrapper}>
+                                    <ShoppingBag size={20} strokeWidth={1.5} />
+                                    {cartCount > 0 && (
+                                        <span className={styles.cartBadge}>{cartCount}</span>
+                                    )}
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {/* Mobile Menu Drawer */}
+            <div className={`${styles.mobileDrawer} ${isMenuOpen ? styles.drawerOpen : ''}`}>
+                <div className={styles.drawerHeader}>
+                    <button
+                        className={styles.closeBtn}
+                        onClick={() => setIsMenuOpen(false)}
+                        aria-label="Close Menu"
+                    >
+                        <X size={28} strokeWidth={1} />
                     </button>
                 </div>
+
+                <nav className={styles.drawerNav}>
+                    <Link href="/" onClick={() => setIsMenuOpen(false)}>HOME</Link>
+                    <Link href="/shop" onClick={() => setIsMenuOpen(false)}>SHOP ALL</Link>
+                    <Link href="/new-arrivals" onClick={() => setIsMenuOpen(false)}>NEW ARRIVALS</Link>
+                    <Link href="/about" onClick={() => setIsMenuOpen(false)}>ABOUT</Link>
+                </nav>
+
+                <div className={styles.drawerFooter}>
+                    <p>© 2026 MYSPIRE</p>
+                </div>
             </div>
-        </header>
+
+            {/* Overlay */}
+            {isMenuOpen && (
+                <div className={styles.overlay} onClick={() => setIsMenuOpen(false)} />
+            )}
+        </>
     );
 }
