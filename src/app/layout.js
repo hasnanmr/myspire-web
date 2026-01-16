@@ -20,6 +20,9 @@ const inter = Inter({
 export const metadata = {
   title: "Myspire | Premium Bags & Accessories",
   description: "Discover premium handcrafted bags designed for your lifestyle.",
+  icons: {
+    icon: '/images/logo.jpeg',
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -16,7 +16,12 @@ export default function Header() {
 
                 {/* Center Logo */}
                 <Link href="/" className={styles.logo}>
-                    Myspire
+                    <img
+                        src="/images/logo.jpeg"
+                        alt="Myspire Logo"
+                        className={styles.logoImage}
+                    />
+                    <span className={styles.logoText}>MYSPIRE</span>
                 </Link>
 
                 {/* Right Navigation: Tools */}

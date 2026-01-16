@@ -25,7 +25,7 @@ export default function AboutPage() {
                 <h2 style={{ marginBottom: '30px', fontSize: '1.8rem' }}>Available on Marketplace</h2>
                 <div style={{ maxWidth: '900px', margin: '0 auto', overflow: 'hidden', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
                     <img
-                        src="/images/products/marketplace-001.png"
+                        src="/images/products/about-001.png"
                         alt="Myspire Marketplace"
                         style={{ width: '100%', height: 'auto', display: 'block' }}
                     />
